@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Landing Page */
+#home {
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+p {
+    opacity: 0.7;
+    margin-bottom: 35px;
+}
+
+button {
+    padding: 16px 42px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* Surprise Screen */
+#surprise {
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: black;
+}
+
+/* BIG TEXT */
+.hamood {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 10px;
+    animation: shake 0.2s infinite, colorFlash 0.6s infinite;
+}
+
+/* Floating chaos */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    animation: float linear infinite;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes shake {
+    0% { transform: translate(2px,2px); }
+    50% { transform: translate(-2px,-2px); }
+    100% { transform: translate(2px,-2px); }
+}
+
+@keyframes colorFlash {
+    0% { color:#ff416c; }
+    50% { color:#ffe600; }
+    100% { color:#00f7ff; }
+}
+
+@keyframes float {
+    from { transform: translateY(100vh) scale(1);}
+    to { transform: translateY(-10vh) scale(1.5);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="home">
+    <h1>I Made Something Cute For You 💖</h1>
+    <p>Tap below… you’ll love it 😌</p>
+    <button onclick="startPrank()">Open Surprise</button>
+</div>
+
+<div id="surprise">
+    <div class="hamood">HAMOOD HABIBI</div>
+</div>
+
+<audio id="sound" preload="auto">
+    <source src="hamood.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startPrank() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("surprise").style.display = "flex";
+
+    const audio = document.getElementById("sound");
+    audio.currentTime = 0;
+    audio.play();
+
+    // Create floating annoying visuals
+    for (let i = 0; i < 35; i++) {
+        let b = document.createElement("div");
+        b.classList.add("bubble");
+
+        let size = Math.random() * 60 + 20;
+        b.style.width = size + "px";
+        b.style.height = size + "px";
+        b.style.left = Math.random() * 100 + "vw";
+        b.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+        document.body.appendChild(b);
+    }
+
+    // Loop audio forever 😈
+    audio.loop = true;
+}
+</script>
+
+</body>
+</html>
