@@ -105,6 +105,24 @@ button:hover {
 @keyframes float {
     from { transform: translateY(100vh) scale(1);}
     to { transform: translateY(-10vh) scale(1.5);}
+    .hamood-img {
+    width: 220px;
+    margin-bottom: 20px;
+    animation: bounce 0.6s infinite alternate,
+               spin 3s linear infinite;
+}
+
+/* Bouncing effect */
+@keyframes bounce {
+    from { transform: translateY(0px) scale(1); }
+    to { transform: translateY(-25px) scale(1.05); }
+}
+
+/* Slight rotation chaos */
+@keyframes spin {
+    from { rotate: -5deg; }
+    to { rotate: 5deg; }
+}
 }
 </style>
 </head>
@@ -118,6 +136,7 @@ button:hover {
 </div>
 
 <div id="surprise">
+    <img src="hamood.png" class="hamood-img">
     <div class="hamood">HAMOOD HABIBI</div>
 </div>
 
